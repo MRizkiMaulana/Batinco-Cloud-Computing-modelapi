@@ -1,0 +1,12 @@
+runtime: python39
+service: model-api-motif
+entrypoint: gunicorn -b :$PORT main:app
+
+instance_class: F2
+
+env_variables:
+  CLOUD_STORAGE_BUCKET: 'batinco'
+
+handlers:
+- url: /.*
+  script: auto
